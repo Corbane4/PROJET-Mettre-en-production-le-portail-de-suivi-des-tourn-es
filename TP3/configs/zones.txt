@@ -1,0 +1,155 @@
+block
+  target: %%REJECT%%
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: 
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+
+dmz
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: ssh
+  ports: 2242/tcp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+
+drop (active)
+  target: DROP
+  icmp-block-inversion: no
+  interfaces: enp0s3
+  sources: 
+  services: 
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+
+external
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: yes
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+
+home
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client mdns samba-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+
+internal (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: bond0 bond0.42
+  sources: 
+  services: 
+  ports: 10051/tcp 2242/tcp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule source ipset="helios-blacklist" drop
+
+nm-shared
+  target: ACCEPT
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: dhcp dns ssh
+  ports: 
+  protocols: icmp ipv6-icmp
+  forward: no
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule priority="32767" reject
+
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 2242/tcp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+
+trusted
+  target: ACCEPT
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: 
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+
+work (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp0s8
+  sources: 192.168.56.0/24
+  services: 
+  ports: 2242/tcp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule source ipset="helios-blacklist" drop
+	rule port port="2242" protocol="tcp" log prefix="SSH-NEW " level="info" limit value="3/m" accept limit value="6/m"
+	rule port port="10051" protocol="tcp" reject
+

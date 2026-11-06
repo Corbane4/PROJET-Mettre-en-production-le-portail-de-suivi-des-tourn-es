@@ -1,0 +1,21 @@
+## Fichiers d'identite
+-w /etc/passwd -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/group -p wa -k identity
+-w /etc/gshadow -p wa -k identity
+
+## Delegation et acces distant
+-w /etc/sudoers -p wa -k sudoers
+-w /etc/sudoers.d/ -p wa -k sudoers
+-w /etc/ssh/sshd_config -p wa -k sshd-config
+-w /etc/ssh/sshd_config.d/ -p wa -k sshd-config
+
+## Binaire setgid cree au TP2
+-w /usr/local/bin/helios-lastlog -p x -k helios-setgid
+
+## Toute commande root lancee par un compte humain
+-a always,exit -F arch=b64 -S execve -F euid=0 -F auid>=1000 -F auid!=unset -k privesc
+-a always,exit -F arch=b32 -S execve -F euid=0 -F auid>=1000 -F auid!=unset -k privesc
+
+## Pare-feu
+-w /etc/firewalld/ -p wa -k firewall
