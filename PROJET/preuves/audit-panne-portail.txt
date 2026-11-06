@@ -1,0 +1,11 @@
+[OK] E1 - Comptes et groupe
+[OK] E2 - Repertoire publie (setgid, ACL)
+[OK] E3 - Script de publication
+[KO] E4 - Units systemd (portail durci, timer) : portail arrete (helios-suivi.service); HTTP / != 200; HTTP /etat.json != 200
+[OK] E5 - Delegation sudo
+[OK] E6 - Pare-feu
+[OK] E7 - Non-regression securite
+[KO] E8 - Supervision Zabbix : helios.suivi.http != 200
+[OK] E9 - Sauvegarde
+Bilan : 7/9
+rc=1

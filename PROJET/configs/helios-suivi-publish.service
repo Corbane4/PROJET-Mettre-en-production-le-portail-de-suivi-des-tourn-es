@@ -1,0 +1,13 @@
+[Unit]
+Description=Publication de etat.json (portail de suivi Helios)
+
+[Service]
+Type=oneshot
+User=helios-suivi
+Group=helios-suivi
+ExecStart=/usr/local/sbin/helios-suivi-publish.sh
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/srv/helios/suivi/www

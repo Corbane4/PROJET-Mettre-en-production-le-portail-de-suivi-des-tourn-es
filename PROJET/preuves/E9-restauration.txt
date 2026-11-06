@@ -1,0 +1,37 @@
+=== (a) extraction de test + comparaison des ACL de www ===
+ACL de www identiques a la production
+
+real	0m0,128s
+user	0m0,029s
+sys	0m0,007s
+=== (b) incident : suppression de index.html ===
+# file: /srv/helios/suivi/www/index.html
+# owner: lea
+# group: suivi
+user::rw-
+user:helios-suivi:r-x	#effective:r--
+group::rwx	#effective:rw-
+mask::rw-
+other::---
+
+rm : supprimer '/srv/helios/suivi/www/index.html' du type fichier ? total 8
+-rw-rw----+ 1 helios-suivi suivi 182  5 nov.  16:28 etat.json
+-rw-rw----+ 1 lea          suivi  55  5 nov.  12:38 index.html
+--- restauration de ce seul fichier ---
+
+real	0m0,031s
+user	0m0,008s
+sys	0m0,001s
+total 8
+-rw-rw----+ 1 helios-suivi suivi 182  5 nov.  16:28 etat.json
+-rw-rw----+ 1 lea          suivi  55  5 nov.  12:38 index.html
+# file: /srv/helios/suivi/www/index.html
+# owner: lea
+# group: suivi
+user::rw-
+user:helios-suivi:r-x	#effective:r--
+group::rwx	#effective:rw-
+mask::rw-
+other::---
+
+Portail de suivi Helios Logistique - tournees en cours

@@ -1,0 +1,16 @@
+# file: /srv/helios/suivi/www
+# owner: root
+# group: suivi
+# flags: -s-
+user::rwx
+user:helios-suivi:rwx
+user:zabbix:--x
+group::rwx
+mask::rwx
+other::---
+default:user::rwx
+default:user:helios-suivi:r-x
+default:group::rwx
+default:mask::rwx
+default:other::---
+

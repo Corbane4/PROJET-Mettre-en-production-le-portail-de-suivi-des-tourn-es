@@ -1,0 +1,12 @@
+$ E5 : sudo
+-r--r-----. 1 root root 580  5 nov.  14:22 /etc/sudoers.d/92-helios-suivi
+/etc/sudoers : analyse réussie
+/etc/sudoers.d/90-helios-ops : analyse réussie
+/etc/sudoers.d/92-helios-suivi : analyse réussie
+Entrées Defaults correspondant pour lea sur vbox :
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin, timestamp_timeout=5, passwd_tries=2
+
+L'utilisateur lea peut utiliser les commandes suivantes sur vbox :
+    (root) /usr/bin/systemctl restart helios-suivi.service, /usr/bin/systemctl status --no-pager helios-suivi.service, /usr/bin/systemctl start helios-suivi-publish.service, /usr/bin/journalctl -u helios-suivi.service -n 100 --no-pager, /usr/bin/journalctl -u helios-suivi-publish.service -n 100 --no-pager
+rc=1
+rc=1

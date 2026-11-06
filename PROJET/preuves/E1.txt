@@ -1,0 +1,19 @@
+$ id lea
+uid=5104(lea) gid=5003(suivi) groupes=5003(suivi)
+$ getent passwd lea helios-suivi
+lea:x:5104:5003:Lea Fabre - responsable suivi des tournees:/home/lea:/bin/bash
+helios-suivi:x:982:980:Compte de service portail de suivi:/srv/helios/suivi:/sbin/nologin
+$ getent group suivi
+suivi:x:5003:
+$ chage -l lea
+Last password change					: nov. 05, 2026
+Password expires					: févr. 03, 2027
+Password inactive					: févr. 10, 2027
+Account expires						: never
+Minimum number of days between password change		: 1
+Maximum number of days between password change		: 90
+Number of days of warning before password expires	: 14
+$ lea dans wheel ou ssh-admins ?
+non (OK)
+$ ls -d /home/helios-suivi
+ls: impossible d'accéder à '/home/helios-suivi': Aucun fichier ou dossier de ce type

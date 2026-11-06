@@ -1,0 +1,20 @@
+$ E3 : publication
+rc=0
+{
+    "genere": "2026-11-06T11:02:36+01:00",
+    "hote": "vbox",
+    "derniere_mesure": "2026-11-06T11:02:35+01:00",
+    "charge_1min": 2.25,
+    "mem_dispo_ko": 1707808,
+    "mesures": 12465
+}
+nov. 06 10:56:03 vbox helios-suivi-publish[5524]: etat.json publie (charge=0.07 mem=2393908 mesures=12387)
+nov. 06 10:56:03 vbox helios-suivi-publish[5525]: fin d execution rc=0
+nov. 06 10:58:03 vbox helios-suivi-publish[5652]: etat.json publie (charge=0.11 mem=2395452 mesures=12411)
+nov. 06 10:58:03 vbox helios-suivi-publish[5653]: fin d execution rc=0
+nov. 06 11:00:03 vbox helios-suivi-publish[5773]: etat.json publie (charge=0.10 mem=2395452 mesures=12434)
+nov. 06 11:00:03 vbox helios-suivi-publish[5774]: fin d execution rc=0
+nov. 06 11:02:03 vbox helios-suivi-publish[6505]: etat.json publie (charge=2.58 mem=1712900 mesures=12458)
+nov. 06 11:02:03 vbox helios-suivi-publish[6507]: fin d execution rc=0
+nov. 06 11:02:36 vbox helios-suivi-publish[6582]: etat.json publie (charge=2.25 mem=1707808 mesures=12465)
+nov. 06 11:02:36 vbox helios-suivi-publish[6583]: fin d execution rc=0

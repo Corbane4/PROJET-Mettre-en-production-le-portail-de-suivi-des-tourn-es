@@ -1,0 +1,12 @@
+[Unit]
+Description=Publication de etat.json toutes les 2 minutes
+
+[Timer]
+OnBootSec=20s
+OnCalendar=*:0/2
+AccuracySec=10s
+Persistent=no
+Unit=helios-suivi-publish.service
+
+[Install]
+WantedBy=timers.target

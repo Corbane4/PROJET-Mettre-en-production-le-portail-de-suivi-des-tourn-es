@@ -1,0 +1,9 @@
+$ E7 : securite
+port 2242
+permitrootlogin no
+passwordauthentication no
+allowgroups ssh-admins
+active
+Archived and active journals take up 73.3M in the file system.
+nov. 05 15:07:51 vbox sshd-session[26298]: User lea from 192.168.56.1 not allowed because none of user's groups are listed in AllowGroups
+nov. 05 15:07:51 vbox sshd-session[26298]: Connection closed by invalid user lea 192.168.56.1 port 58738 [preauth]

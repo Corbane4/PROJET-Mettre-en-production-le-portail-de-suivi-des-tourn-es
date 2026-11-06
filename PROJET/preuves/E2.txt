@@ -1,0 +1,50 @@
+$ ls -ld www
+drwxrws---+ 2 root suivi 24  5 nov.  12:38 /srv/helios/suivi/www
+$ getfacl www
+getfacl : suppression du premier « / » des noms de chemins absolus
+# file: srv/helios/suivi/www
+# owner: root
+# group: suivi
+# flags: -s-
+user::rwx
+user:helios-suivi:rwx
+user:zabbix:--x
+group::rwx
+mask::rwx
+other::---
+default:user::rwx
+default:user:helios-suivi:r-x
+default:group::rwx
+default:mask::rwx
+default:other::---
+
+$ fichier de lea, avec umask 077 volontairement restrictif
+-rw-rw----+ 1 lea suivi 0  5 nov.  12:40 /srv/helios/suivi/www/test-umask
+getfacl : suppression du premier « / » des noms de chemins absolus
+# file: srv/helios/suivi/www/test-umask
+# owner: lea
+# group: suivi
+user::rw-
+user:helios-suivi:r-x	#effective:r--
+group::rwx	#effective:rw-
+mask::rw-
+other::---
+
+$ index.html
+-rw-rw----+ 1 lea suivi 55  5 nov.  12:38 /srv/helios/suivi/www/index.html
+--- helios-suivi lit ?
+Portail de suivi Helios Logistique - tournees en cours
+--- nadia lit ? (refus attendu)
+cat: /srv/helios/suivi/www/index.html: Permission non accordée
+--- zabbix ls ? (refus attendu)
+ls: impossible d'ouvrir le répertoire '/srv/helios/suivi/www': Permission non accordée
+--- zabbix stat ? (OK attendu)
+  Fichier : /srv/helios/suivi/www/index.html
+   Taille : 55        	Blocs : 8          Blocs d'E/S : 4096   fichier
+Périphérique : fd00h/64768d	Inœud : 34140955    Liens : 1
+Accès : (0660/-rw-rw----)  UID : ( 5104/     lea)   GID : ( 5003/   suivi)
+Contexte : unconfined_u:object_r:var_t:s0
+ Accès : 2026-11-05 12:40:54.941234309 +0100
+Modif. : 2026-11-05 12:38:42.296594644 +0100
+Changt : 2026-11-05 12:38:42.296594644 +0100
+  Créé : 2026-11-05 12:38:42.296594644 +0100
